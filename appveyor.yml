@@ -68,6 +68,10 @@ environment:
 init:
   - "ECHO %PYTHON% %PYTHON_VERSION% %PYTHON_ARCH%"
   - "ECHO \"%APPVEYOR_SCHEDULED_BUILD%\""
+  - type "C:\Program Files (x86)\Microsoft Visual Studio 10.0\redist.txt"
+  - C:\cygwin\bin\find "c:\Program Files (x86)" -type f -name 'msvcp*.dll'
+  - C:\cygwin\bin\find "c:\Program Files" -type f -name 'msvcp*.dll'
+  - ps: Exit-AppveyorBuild
   # If there is a newer build queued for the same PR, cancel this one.
   # The AppVeyor 'rollout builds' option is supposed to serve the same
   # purpose but it is problematic because it tends to cancel builds pushed
